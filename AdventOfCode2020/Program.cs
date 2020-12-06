@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace AdventOfCode2020
 {
@@ -22,7 +21,8 @@ namespace AdventOfCode2020
         private static List<int> ReadTheReportInput()
         {
             List<int> expenseReport = new List<int>();
-            Stream input = File.Open(@"C:\source\Csharp_projects\dev\AdventOfCode2020\AdventOfCode2020\Day1Input.txt", FileMode.Open);
+            const string Path = @"C:\source\Csharp_projects\dev\AdventOfCode2020\AdventOfCode2020\Day1Input.txt";
+            Stream input = File.Open(Path, FileMode.Open);
             TextReader textReader = new StreamReader(input, Encoding.UTF8);
             string line;
             while ((line = textReader.ReadLine()) != null)
@@ -129,11 +129,99 @@ namespace AdventOfCode2020
                     FixTheRiport();
                     break;
                 case 2:
-                 //   PasswordCheck();
+                    PasswordCheck();
+                    break;
+                case 3:
+                    CountTheTrees();
                     break;
                 default:
                     break;
             }
+        }
+
+        private static void CountTheTrees()
+        {
+           //
+        }
+
+        private static void PasswordCheck()
+        {
+            List<(int pwmin, int pwmax, char mustinpw, string pwtocheck)> passwordlist = ReadPasswordslist();
+            CheckPaswordValidation(passwordlist);
+        }
+
+        private static void CheckPaswordValidation(List<(int pwmin, int pwmax, char mustinpw, string pwtocheck)> passwordlist)
+        {
+            int validPWcount, validPWcountsecond;
+            CheckFirstValidation(passwordlist, out validPWcount, out validPWcountsecond);
+            validPWcountsecond = CheckSecondValidation(passwordlist, validPWcountsecond);
+            WriteTheResult(validPWcount, validPWcountsecond);
+        }
+
+        private static void CheckFirstValidation(List<(int pwmin, int pwmax, char mustinpw, string pwtocheck)> passwordlist, out int validPWcount, out int validPWcountsecond)
+        {
+            Dictionary<int, int> occurance = new Dictionary<int, int>();
+            validPWcount = 0;
+            validPWcountsecond = 0;
+            foreach (var item in passwordlist)
+            {
+                int characterOccurance = 0;
+                int pwmustchar = item.pwtocheck.IndexOf(item.mustinpw);
+                while (pwmustchar >= 0)
+                {
+                    ++characterOccurance;
+                    pwmustchar = item.pwtocheck.IndexOf(item.mustinpw, pwmustchar + 1);
+                }
+                occurance.Add(occurance.Count, characterOccurance);
+                if (characterOccurance >= item.pwmin && characterOccurance <= item.pwmax)
+                {
+                    ++validPWcount;
+                }
+            }
+        }
+
+        private static int CheckSecondValidation(List<(int pwmin, int pwmax, char mustinpw, string pwtocheck)> passwordlist, int validPWcountsecond)
+        {
+            bool mustcharpos1;
+            bool mustcharpos2;
+            foreach (var item in passwordlist)
+            {
+                mustcharpos1 = item.pwtocheck.Length >= item.pwmin && item.pwtocheck[item.pwmin - 1] == item.mustinpw;
+                mustcharpos2 = item.pwtocheck.Length >= item.pwmax && item.pwtocheck[item.pwmax - 1] == item.mustinpw;
+                if (mustcharpos1 != mustcharpos2)
+                {
+                    ++validPWcountsecond;
+                }
+            }
+
+            return validPWcountsecond;
+        }
+
+        private static void WriteTheResult(int validPWcount, int validPWcountsecond)
+        {
+            Console.WriteLine("The First validation result: " + validPWcount.ToString());
+            Console.WriteLine("The Second validation result: " + validPWcountsecond.ToString());
+        }
+
+        private static List<(int pwmin, int pwmax, char mustinpw, string pwtocheck)> ReadPasswordslist()
+        {
+            List<(int pwmin, int pwmax, char mustinpw, string pwtocheck)> passwordlist = new List<(int pwmin, int pwmax, char mustinpw, string pwtocheck)>();
+            const string Path = @"C:\source\Csharp_projects\dev\AdventOfCode2020\AdventOfCode2020\Day2Input.txt";
+            Stream input = File.Open(Path, FileMode.Open);
+            TextReader textReader = new StreamReader(input, Encoding.UTF8);
+            string line;
+            while ((line = textReader.ReadLine()) != null)
+            {
+                string[] inputText = line.Trim().Split(',');
+                foreach (var item in inputText)
+                {
+                    string[] lineparts = item.Split(' ');
+                    string[] pwrule = lineparts[0].Split('-');
+                    passwordlist.Add((int.Parse(pwrule[0]), int.Parse(pwrule[1]), lineparts[1][0], lineparts[2]));
+                }
+            }
+
+            return passwordlist;
         }
     }
 }

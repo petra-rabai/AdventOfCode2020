@@ -11,3 +11,6 @@ C:\source\Csharp_projects\dev\AdventOfCode2020\AdventOfCode2020\obj\Debug\netcor
 C:\source\Csharp_projects\dev\AdventOfCode2020\AdventOfCode2020\obj\Debug\netcoreapp3.1\AdventOfCode2020.dll
 C:\source\Csharp_projects\dev\AdventOfCode2020\AdventOfCode2020\obj\Debug\netcoreapp3.1\AdventOfCode2020.pdb
 C:\source\Csharp_projects\dev\AdventOfCode2020\AdventOfCode2020\obj\Debug\netcoreapp3.1\AdventOfCode2020.genruntimeconfig.cache
+C:\source\Csharp_projects\dev\AdventOfCode2020\AdventOfCode2020\bin\Debug\netcoreapp3.1\Day1Input.txt
+C:\source\Csharp_projects\dev\AdventOfCode2020\AdventOfCode2020\bin\Debug\netcoreapp3.1\Day2Input.txt
+C:\source\Csharp_projects\dev\AdventOfCode2020\AdventOfCode2020\bin\Debug\netcoreapp3.1\Day3Input.txt

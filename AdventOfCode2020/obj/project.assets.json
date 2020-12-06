@@ -8,8 +8,7 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\prabai\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\petra\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -17,14 +16,11 @@
       "projectUniqueName": "C:\\source\\Csharp_projects\\dev\\AdventOfCode2020\\AdventOfCode2020\\AdventOfCode2020.csproj",
       "projectName": "AdventOfCode2020",
       "projectPath": "C:\\source\\Csharp_projects\\dev\\AdventOfCode2020\\AdventOfCode2020\\AdventOfCode2020.csproj",
-      "packagesPath": "C:\\Users\\prabai\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\petra\\.nuget\\packages\\",
       "outputPath": "C:\\source\\Csharp_projects\\dev\\AdventOfCode2020\\AdventOfCode2020\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\prabai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\petra\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
